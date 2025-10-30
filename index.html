@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Games Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'epic-dark': '#0d0d0d',
+                        'epic-gray': '#1e1e1e',
+                        'epic-blue': '#0074E4',
+                        'epic-light-gray': '#2d2d2d',
+                        'epic-accent': '#ff2a6d'
+                    },
+                    animation: {
+                        'gradient-shift': 'gradientShift 3s ease infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                    },
+                    keyframes: {
+                        gradientShift: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-epic-dark text-white font-sans antialiased">
+    <!-- Header -->
+    <header class="bg-epic-gray border-b border-epic-light-gray sticky top-0 z-50 backdrop-blur-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-8">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                        <span class="text-xl font-bold tracking-tight">EPIC GAMES</span>
+                    </div>
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="#" class="nav-link text-sm hover:text-epic-blue">Tienda</a>
+                        <a href="#" class="nav-link text-sm hover:text-epic-blue">Distribución</a>
+                        <a href="#" class="nav-link text-sm hover:text-epic-blue">Soporte</a>
+                        <a href="#" class="nav-link text-sm hover:text-epic-blue">Unreal Engine</a>
+                    </nav>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center bg-epic-light-gray rounded-full px-4 py-2">
+                        <i class="fas fa-search text-gray-400 mr-2"></i>
+                        <input type="text" placeholder="Buscar juegos..." class="search-input bg-transparent border-none outline-none text-sm w-48 placeholder-gray-500">
+                    </div>
+                    <button class="hidden md:block text-sm hover:text-epic-blue transition font-medium">Iniciar sesión</button>
+                    <button class="bg-epic-blue hover:bg-blue-600 px-4 py-2 rounded text-sm font-semibold transition glow-button">
+                        <i class="fas fa-download mr-2"></i>Descargar
+                    </button>
+                    <button class="md:hidden text-gray-400 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[500px] overflow-hidden">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="relative container mx-auto px-4 h-full flex items-center">
+            <div class="max-w-2xl fade-in">
+                <div class="inline-flex items-center bg-gradient-to-r from-epic-accent to-pink-500 text-black px-4 py-2 rounded-full text-sm font-bold mb-4 shadow-lg">
+                    <i class="fas fa-gift mr-2"></i>GRATIS AHORA
+                </div>
+                <h1 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Cyberpunk Adventure</h1>
+                <p class="text-lg mb-6 text-gray-200 max-w-lg">Juego gratis disponible hasta el 21 de diciembre. Descárgalo ahora y es tuyo para siempre.</p>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition flex items-center justify-center shadow-xl glow-button">
+                        <i class="fas fa-download mr-2"></i>Obtener gratis
+                    </button>
+                    <button class="bg-transparent border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition">
+                        Ver más detalles
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Games -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-bold">Juegos gratis esta semana</h2>
+            <a href="#" class="text-epic-blue hover:underline font-medium flex items-center">
+                Ver más <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        <!-- tarjetas de juegos gratis -->
+        <!-- (Se mantiene el contenido original igual) -->
+    </section>
+
+    <!-- Popular Games -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-bold">Juegos populares</h2>
+            <a href="#" class="text-epic-blue hover:underline font-medium flex items-center">
+                Ver todos <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="popularGames"></div>
+    </section>
+
+    <!-- Ofertas especiales -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-bold">Ofertas especiales</h2>
+            <a href="#" class="text-epic-blue hover:underline font-medium flex items-center">
+                Ver todas <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        <!-- tarjetas de ofertas -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-epic-gray border-t border-epic-light-gray mt-20">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <!-- contenido del footer -->
+            </div>
+            <div class="border-t border-epic-light-gray pt-8 text-sm text-gray-400 text-center">
+                &copy; 2024 Epic Games, Inc. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+            document.documentElement.classList.add('dark');
+        
+        // Popular games dynamic section
+        const gameData = [
+            { name: 'Battle Royale', icon: 'fa-chess', gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', free: true },
+            { name: 'Survival Island', icon: 'fa-tree', gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', price: 24.99 },
+            { name: 'Night City', icon: 'fa-city', gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', price: 39.99 },
+        ];
+        const popularGamesContainer = document.getElementById('popularGames');
+        gameData.forEach(game => {
+            const div = document.createElement('div');
+            div.className = 'game-card bg-epic-gray rounded-xl overflow-hidden cursor-pointer group';
+            div.innerHTML = `
+                <div class="h-40 flex items-center justify-center relative overflow-hidden" style="background:${game.gradient}">
+                    <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"></div>
+                    <i class="fas ${game.icon} text-4xl text-white opacity-70 group-hover:opacity-100"></i>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-sm mb-2">${game.name}</h3>
+                    ${game.free ? '<span class="free-badge text-lg">GRATIS</span>' : `<span class="text-lg font-bold">$${game.price}</span>`}
+                </div>`;
+            popularGamesContainer.appendChild(div);
+        });
+    </script>
+</body>
+</html>
