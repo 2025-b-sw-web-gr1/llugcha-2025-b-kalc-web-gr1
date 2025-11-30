@@ -1,0 +1,34 @@
+meta {
+  name: Delete Actor
+  type: http
+  seq: 5
+}
+
+delete {
+  url: https://jsonplaceholder.typicode.com/users/1
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+vars {
+  actorId: 1
+}
+
+docs {
+  # Eliminar actor
+  
+  Elimina un actor por su ID.
+  
+  ## Path Parameters
+  - id: ID del actor a eliminar
+  
+  ## Respuesta esperada
+  - Status: 204 No Content (sin body)
+  
+  ## Errores posibles
+  - 404: Actor no encontrado
+}

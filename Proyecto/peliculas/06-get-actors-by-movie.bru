@@ -1,0 +1,27 @@
+meta {
+  name: Get Actors by Movie
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/posts/1/comments
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+vars {
+  movieId: 1
+}
+
+docs {
+  # Obtener actores de una película
+  
+  Demuestra la relación M a M
+  
+  Status: 200 OK
+}

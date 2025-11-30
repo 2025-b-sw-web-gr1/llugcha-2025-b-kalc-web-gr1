@@ -1,0 +1,44 @@
+meta {
+  name: Create Actor
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://jsonplaceholder.typicode.com/users
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "name": "Leonardo DiCaprio",
+    "birthYear": 1974,
+    "nationality": "Estadounidense",
+    "biography": "Leonardo Wilhelm DiCaprio es un actor y productor de cine estadounidense conocido por sus papeles en películas de ciencia ficción y drama."
+  }
+}
+
+docs {
+  # Crear nuevo actor
+  
+  Crea un actor con los datos proporcionados.
+  
+  ## Request Body
+  - name: string (2-100 caracteres) - REQUERIDO
+  - birthYear: número (1800-año actual) - REQUERIDO
+  - nationality: string (2-50 caracteres) - REQUERIDO
+  - biography: string (10-1000 caracteres) - REQUERIDO
+  
+  ## Respuesta esperada
+  - Status: 201 Created
+  - Body: Objeto Actor con ID generado
+  
+  ## Errores posibles
+  - 400: Datos inválidos o faltantes
+}

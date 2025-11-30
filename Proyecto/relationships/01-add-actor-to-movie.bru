@@ -1,0 +1,54 @@
+meta {
+  name: Add Actor to Movie
+  type: http
+  seq: 1
+}
+
+post {
+  url: https://jsonplaceholder.typicode.com/posts/1/comments
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "postId": 1,
+    "id": 1,
+    "name": "Leonardo DiCaprio",
+    "email": "leonardo@example.com",
+    "body": "Actor en esta película"
+  }
+}
+
+vars {
+  movieId: 1
+  actorId: 1
+}
+
+docs {
+  # Asignar actor a película
+  
+  Crea una relación M a M entre una película y un actor.
+  Indica que un actor aparece en una película específica.
+  
+  ## Path Parameters
+  - movieId: ID de la película
+  - actorId: ID del actor
+  
+  ## Request Body
+  - postId: ID de la película
+  - id: ID del actor
+  - name: Nombre del actor
+  
+  ## Respuesta esperada
+  - Status: 201 Created
+  
+  ## Errores posibles
+  - 400: Película o actor no existen
+  - 400: El actor ya está asignado a esta película
+}

@@ -1,0 +1,50 @@
+meta {
+  name: Update Actor
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://jsonplaceholder.typicode.com/users/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "name": "Leonardo Wilhelm DiCaprio",
+    "birthYear": 1974,
+    "nationality": "Estadounidense",
+    "biography": "Leonardo Wilhelm DiCaprio es un actor, productor y ambientalista estadounidense. Ha ganado múltiples premios incluyendo un Oscar."
+  }
+}
+
+vars {
+  actorId: 1
+}
+
+docs {
+  # Actualizar actor completo
+  
+  Actualiza todos los campos de un actor existente.
+  
+  ## Path Parameters
+  - id: ID del actor a actualizar
+  
+  ## Request Body
+  - Todos los campos son REQUERIDOS (igual que POST)
+  
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Objeto Actor actualizado
+  
+  ## Errores posibles
+  - 400: Datos inválidos
+  - 404: Actor no encontrado
+}
+

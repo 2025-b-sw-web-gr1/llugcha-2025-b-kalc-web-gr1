@@ -1,0 +1,35 @@
+meta {
+  name: Get Movie By ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/posts/1
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+vars {
+  movieId: 1
+}
+
+docs {
+  # Obtener película por ID
+  
+  Retorna una película específica basada en su ID.
+  
+  ## Path Parameters
+  - id: ID de la película (ej: 1)
+  
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Objeto Movie
+  
+  ## Error posible
+  - 404: Película no encontrada
+}

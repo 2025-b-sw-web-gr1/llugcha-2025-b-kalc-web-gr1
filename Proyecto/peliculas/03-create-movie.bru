@@ -1,0 +1,35 @@
+meta {
+  name: Create Movie
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://jsonplaceholder.typicode.com/posts
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "releaseYear": 2010,
+    "genre": "Ciencia Ficción",
+    "duration": 148,
+    "rating": 8.8
+  }
+}
+
+docs {
+  # Crear nueva película
+  
+  Crea una película con los datos enviados.
+  
+  Status: 201 Created
+}

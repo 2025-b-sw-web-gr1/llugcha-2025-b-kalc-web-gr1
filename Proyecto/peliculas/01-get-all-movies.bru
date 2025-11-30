@@ -1,0 +1,23 @@
+meta {
+  name: Get All Movies
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/posts
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Obtener todas las películas
+  Retorna lista completa de películas
+  
+  Status: 200 OK
+  Body: Array de películas
+}

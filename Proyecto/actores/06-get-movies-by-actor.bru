@@ -1,0 +1,36 @@
+meta {
+  name: Get Movies by Actor
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://jsonplaceholder.typicode.com/users/1/posts
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+vars {
+  actorId: 1
+}
+
+docs {
+  # Obtener películas de un actor
+  
+  Retorna todas las películas en las que aparece un actor específico.
+  Demuestra la relación M a M entre actores y películas.
+  
+  ## Path Parameters
+  - actorId: ID del actor
+  
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Array de objetos Movie
+  
+  ## Errores posibles
+  - 404: Actor no encontrado
+}

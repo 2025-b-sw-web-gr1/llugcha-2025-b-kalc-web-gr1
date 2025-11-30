@@ -1,0 +1,37 @@
+meta {
+  name: Remove Actor from Movie
+  type: http
+  seq: 2
+}
+
+delete {
+  url: https://jsonplaceholder.typicode.com/posts/1/comments/1
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+vars {
+  movieId: 1
+  actorId: 1
+}
+
+docs {
+  # Remover actor de película
+  
+  Elimina la relación M a M entre una película y un actor.
+  Indica que un actor NO aparece en una película específica.
+  
+  ## Path Parameters
+  - movieId: ID de la película
+  - actorId: ID del actor
+  
+  ## Respuesta esperada
+  - Status: 204 No Content
+  
+  ## Errores posibles
+  - 404: La asignación no existe
+}
