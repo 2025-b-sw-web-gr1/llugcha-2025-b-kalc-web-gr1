@@ -9,6 +9,8 @@ La elección de los **Pinscher Miniatura** se basa en varios factores:
 1.  **Popularidad y Necesidad de Información:** Son perros muy populares como mascotas urbanas debido a su tamaño compacto. Sin embargo, su energía y temperamento requieren una guía específica, especialmente durante la etapa de cachorro.
 2.  **Enfoque Educativo:** El proyecto se centra en la etapa de cachorro, que es crítica para el desarrollo conductual y físico del perro.
 3.  **Claridad del Tema:** Elegir una raza específica permite enfocar el contenido de manera clara y concisa, ideal para una demostración de servidor simple.
+1.  **Interés Personal:**  Tenia 4 pinchers ahora tengo 3 y son lo mejor que me han pasado en la vida.
+
 
 ## ⚙️ Pila Tecnológica
 
