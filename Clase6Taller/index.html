@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🐶 Adopta un Perrito - HTML5 Semántico</title>
+  <style>
+    /* Estilos simples para que quede bonito */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #fffaf0; color: #333; line-height: 1.6; }
+    header { background: linear-gradient(135deg, #ff9a9e, #fad0c4); color: white; text-align: center; padding: 4rem 1rem; }
+    header h1 { font-size: 3rem; }
+    nav { background: #333; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+    nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; }
+    nav a { color: white; text-decoration: none; font-weight: 600; }
+    nav a:hover { color: #ff9a9e; }
+    
+    main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    section { margin-bottom: 4rem; }
+    h2 { color: #ff6b6b; text-align: center; margin-bottom: 2rem; font-size: 2.2rem; }
+    
+    .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    article { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    article img { width: 100%; height: 250px; object-fit: cover; }
+    .info { padding: 1.5rem; }
+    .info h3 { color: #ff6b6b; margin-bottom: 0.5rem; }
+    .edad { font-size: 0.9rem; color: #777; }
+    
+    footer { background: #333; color: white; text-align: center; padding: 3rem 1rem; }
+    footer a { color: #ff9a9e; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera semántica -->
+  <header>
+    <h1>🐶 Refugio de Perritos Feliz</h1>
+    <p>¡Encuentra a tu mejor amigo peludo hoy mismo!</p>
+  </header>
+
+  <!-- Navegación -->
+  <nav>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#adopcion">En adopción</a></li>
+      <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido principal -->
+  <main>
+    
+    <!-- Sección hero -->
+    <section id="inicio">
+      <h2>¡Todos merecen un hogar lleno de amor!</h2>
+      <p style="text-align:center; font-size:1.2rem;">
+        Actualmente tenemos <strong>12 perritos</strong> esperando una familia. 
+        Todos están vacunados, desparasitados y listos para ser adoptados ❤️
+      </p>
+    </section>
+
+    <!-- Galería de perritos (uso de <section> + <article>) -->
+    <section id="adopcion" class="galeria">
+      <h2>Perritos en adopción</h2>
+
+      <article>
+        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=600" alt="Luna - Labrador hembra de 2 años">
+        <div class="info">
+          <h3>Luna</h3>
+          <p class="edad">2 años · Hembra · Labrador Retriever</p>
+          <p>Super cariñosa y juguetona. Ideal para familias con niños.</p>
+        </div>
+      </article>
+
+      <article>
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600" alt="Max - Beagle macho de 3 años">
+        <div class="info">
+          <h3>Max</h3>
+          <p class="edad">3 años · Macho · Beagle</p>
+          <p>Le encanta explorar y seguir rastros. ¡Un detective nato!</p>
+        </div>
+      </article>
+
+      <article>
+        <img src="https://images.unsplash.com/photo-1611004087871-c0f2c2d7bfbs?w=600" alt="Canela - Mestiza pequeña de 1 año">
+        <div class="info">
+          <h3>Canela</h3>
+          <p class="edad">1 año · Hembra · Mestiza pequeña</p>
+          <p>Tamaño perfecto para departamentos. Muy mimosa.</p>
+        </div>
+      </article>
+
+      <!-- Puedes seguir agregando más <article> con otros perritos -->
+    </section>
+
+    <!-- Sección sobre nosotros -->
+    <section id="sobre-nosotros">
+      <h2>¿Quiénes somos?</h2>
+      <p style="text-align:center; max-width:800px; margin:0 auto; font-size:1.1rem;">
+        Somos un refugio sin fines de lucro que rescata perritos abandonados de las calles. 
+        Creemos que <strong>todos los perros merecen una segunda oportunidad</strong>. 
+        ¡Adoptar salva dos vidas: la del perrito y el espacio para rescatar otro más!
+      </p>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>🐾 Refugio Perritos Feliz © 2025 | Hecho con ❤️ y HTML5 semántico</p>
+    <p>Contacto: <a href="mailto:adopta@perritosfeliz.com">adopta@perritosfeliz.com</a></p>
+  </footer>
+
+</body>
+</html>
