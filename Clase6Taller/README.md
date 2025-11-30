@@ -3,10 +3,7 @@
 ## 📌 Objetivo de la clase
 Comprender qué es el **World Wide Web Consortium (W3C)**, su misión, su impacto en el desarrollo web y aplicar algunos de sus estándares más importantes en proyectos prácticos.
 
-**Presentación de la clase**:  
-🔗 [Ver presentación en Presentations.ai](https://app.presentations.ai/view/Mj0n7oPZel)
 
----
 
 ## 🧠 Parte 1: Mapa mental sobre la W3C
 
@@ -21,56 +18,64 @@ Crear un mapa mental (en papel o digital con herramientas como **Coggle**, **Min
 - ¿Quiénes participan en ella?
 - ¿Por qué es importante para los desarrolladores web?
 
-### Puntos clave para incluir en tu mapa mental
+![MAPA MENTAL](image-2.png)
 
-- **W3C** = World Wide Web Consortium
-- Organización internacional fundada en **1994** por **Tim Berners-Lee** (inventor de la Web)
-- Misión: **"Llevar la Web a su máximo potencial"** mediante el desarrollo de estándares abiertos
-- Promueve: **interoperabilidad**, **accesibilidad**, **internacionalización**, **usabilidad** y **apertura**
-- Más de **400 miembros** (empresas, universidades, gobiernos, organizaciones)
-- Los estándares son **recomendaciones técnicas** (no obligatorios, pero ampliamente adoptados)
+## 📋 Parte 2: Exploración y selección de 5 estándares W3C
+
+A continuación se presentan cinco estándares del W3C, con su descripción y la justificación de por qué fueron seleccionados.
 
 ---
 
-## 📋 Parte 2: Exploración y selección de estándares W3C
+### 1️⃣ HTML5 — *HyperText Markup Language 5*
 
-**Objetivo**: Familiarizarse con los principales estándares del W3C y elegir los más relevantes.
+**Descripción:**  
+Es el lenguaje estándar para estructurar contenido en la Web. Introduce etiquetas semánticas, multimedia nativa, APIs y mejoras de accesibilidad.
 
-**Actividad**:
-1. Investigar y seleccionar **5 estándares del W3C** que te parezcan interesantes o útiles.
-2. Para cada uno, escribir:
-   - Nombre completo
-   - Breve descripción
-   - Por qué lo elegiste (justificación)
-
-### Ejemplos de estándares populares (puedes usarlos o buscar otros)
-
-| Estándar              | Nombre completo                              | Descripción breve                                                    | Uso común                                  |
-|-----------------------|----------------------------------------------|----------------------------------------------------------------------|--------------------------------------------|
-| HTML5                 | HyperText Markup Language 5                  | Lenguaje base para estructurar contenido web (semántica, multimedia) | Todas las páginas modernas                 |
-| CSS3                  | Cascading Style Sheets Level 3               | Estilos visuales (Flexbox, Grid, animaciones, variables, etc.)      | Diseño responsive y atractivo              |
-| WCAG 2.1 / 2.2        | Web Content Accessibility Guidelines         | Guías para hacer sitios web accesibles a personas con discapacidad  | Cumplir leyes de accesibilidad             |
-| WAI-ARIA              | Accessible Rich Internet Applications        | Atributos para mejorar accesibilidad en apps dinámicas (SPA)         | React, Vue, Angular                        |
-| SVG                   | Scalable Vector Graphics                    | Gráficos vectoriales que escalan sin perder calidad                  | Iconos, ilustraciones, animaciones         |
-| Web APIs (Canvas, WebGL, Fetch, etc.) | Varias                                      | APIs nativas del navegador para funcionalidades avanzadas           | Juegos, gráficos, peticiones HTTP          |
-| WOFF / WOFF2          | Web Open Font Format                         | Fuentes tipográficas optimizadas para web                            | Tipografía personalizada                   |
-
-**Sitio oficial para explorar más estándares**: https://www.w3.org/standards/
+**Por qué lo elegí:**  
+Es la base del desarrollo web moderno. Permite escribir código más limpio, accesible y optimizado para los buscadores.
 
 ---
 
-## 🛠️ Parte 3: Implementación práctica
+### 2️⃣ CSS3 — *Cascading Style Sheets Level 3*
 
-**Objetivo**: Aplicar uno de los estándares seleccionados en un proyecto pequeño.
+**Descripción:**  
+Estándar que define el estilo visual de las páginas web. Incluye Flexbox, Grid, animaciones, variables y media queries.
 
-**Actividad**:
-- En grupo o individual, elegir **uno** de los 5 estándares investigados.
-- Crear un ejemplo práctico (código + resultado visible).
-- Preparar una breve presentación (máximo 5 minutos) explicando:
-  - Qué estándar usaste
-  - Código principal
-  - Qué beneficios trae seguir ese estándar
-  - Qué aprendiste
+**Por qué lo elegí:**  
+Es fundamental para crear interfaces atractivas, responsive y profesionales sin depender de librerías externas.
+
+---
+
+### 3️⃣ WCAG 2.1 — *Web Content Accessibility Guidelines*
+
+**Descripción:**  
+Guías internacionales para asegurar que los sitios web sean accesibles, especialmente para personas con discapacidades visuales, auditivas, motoras o cognitivas.
+
+**Por qué lo elegí:**  
+La accesibilidad es esencial en el desarrollo web profesional. Seguir estas guías mejora la inclusión y es un requisito en muchas instituciones.
+
+---
+
+### 4️⃣ WAI-ARIA — *Accessible Rich Internet Applications*
+
+**Descripción:**  
+Conjunto de atributos que mejoran la accesibilidad de aplicaciones dinámicas, ayudando a los lectores de pantalla a interpretar menús, modales, componentes y estados.
+
+**Por qué lo elegí:**  
+Es clave para desarrollar aplicaciones modernas con React, Vue o Angular que sigan buenas prácticas de accesibilidad.
+
+---
+
+### 5️⃣ SVG — *Scalable Vector Graphics*
+
+**Descripción:**  
+Formato vectorial basado en XML para crear gráficos e iconos que pueden escalar a cualquier tamaño sin perder calidad.
+
+**Por qué lo elegí:**  
+Es ideal para íconos, ilustraciones y animaciones ligeras, manteniendo excelente calidad visual y rendimiento en cualquier dispositivo.
+
+---
+
 
 ## 🛠️ Parte 3: Implementación práctica (¡ENTREGADO!)
 
