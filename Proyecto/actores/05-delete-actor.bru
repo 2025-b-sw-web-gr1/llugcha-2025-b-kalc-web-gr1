@@ -5,7 +5,7 @@ meta {
 }
 
 delete {
-  url: https://jsonplaceholder.typicode.com/users/1
+  url: https://api.ejemplo.com/actors/1
   body: none
   auth: none
 }
@@ -14,21 +14,12 @@ headers {
   Accept: application/json
 }
 
-vars {
-  actorId: 1
-}
-
 docs {
-  # Eliminar actor
+  # Eliminar Actor
   
-  Elimina un actor por su ID.
-  
-  ## Path Parameters
-  - id: ID del actor a eliminar
+  Elimina un actor de la base de datos usando su ID.
   
   ## Respuesta esperada
-  - Status: 204 No Content (sin body)
-  
-  ## Errores posibles
-  - 404: Actor no encontrado
+  - Status: 200 OK o 204 No Content
+  - Body: Mensaje de confirmación o cuerpo vacío.
 }

@@ -5,47 +5,26 @@ meta {
 }
 
 put {
-  url: https://jsonplaceholder.typicode.com/posts/1
+  url: https://api.ejemplo.com/movies/5
   body: json
   auth: none
 }
 
 headers {
   Content-Type: application/json
-  Accept: application/json
 }
 
 body:json {
   {
-    "title": "Inception - Director's Cut",
-    "director": "Christopher Nolan",
-    "releaseYear": 2010,
-    "genre": "Ciencia Ficción",
-    "duration": 150,
-    "rating": 8.9
+    "id": 5,
+    "title": "La Gran Aventura (Edición Extendida)",
+    "release_year": 2025,
+    "director": "Director Ficticio"
   }
 }
 
-vars {
-  movieId: 1
-}
-
 docs {
-  # Actualizar película completa
+  # Actualizar Película
   
-  Actualiza todos los campos de una película existente.
-  
-  ## Path Parameters
-  - id: ID de la película a actualizar
-  
-  ## Request Body
-  - Todos los campos son REQUERIDOS (igual que POST)
-  
-  ## Respuesta esperada
-  - Status: 200 OK
-  - Body: Objeto Movie actualizado
-  
-  ## Errores posibles
-  - 400: Datos inválidos
-  - 404: Película no encontrada
+  Actualiza completamente los datos de una película existente.
 }

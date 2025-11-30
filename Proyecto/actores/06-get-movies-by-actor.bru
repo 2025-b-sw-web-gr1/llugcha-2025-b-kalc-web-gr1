@@ -1,11 +1,11 @@
 meta {
-  name: Get Movies by Actor
+  name: Get Movies By Actor
   type: http
   seq: 6
 }
 
 get {
-  url: https://jsonplaceholder.typicode.com/users/1/posts
+  url: https://api.ejemplo.com/actors/1/movies
   body: none
   auth: none
 }
@@ -14,23 +14,12 @@ headers {
   Accept: application/json
 }
 
-vars {
-  actorId: 1
-}
-
 docs {
-  # Obtener películas de un actor
+  # Obtener Películas por Actor
   
-  Retorna todas las películas en las que aparece un actor específico.
-  Demuestra la relación M a M entre actores y películas.
-  
-  ## Path Parameters
-  - actorId: ID del actor
+  Retorna la lista de películas en las que ha participado el actor con el ID proporcionado.
   
   ## Respuesta esperada
   - Status: 200 OK
-  - Body: Array de objetos Movie
-  
-  ## Errores posibles
-  - 404: Actor no encontrado
+  - Body: Array de objetos Película
 }

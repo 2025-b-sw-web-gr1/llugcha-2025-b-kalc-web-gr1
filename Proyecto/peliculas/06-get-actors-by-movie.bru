@@ -1,11 +1,11 @@
 meta {
-  name: Get Actors by Movie
+  name: Get Actors By Movie
   type: http
   seq: 6
 }
 
 get {
-  url: https://jsonplaceholder.typicode.com/posts/1/comments
+  url: https://api.ejemplo.com/movies/5/actors
   body: none
   auth: none
 }
@@ -14,14 +14,12 @@ headers {
   Accept: application/json
 }
 
-vars {
-  movieId: 1
-}
-
 docs {
-  # Obtener actores de una película
+  # Obtener Actores por Película
   
-  Demuestra la relación M a M
+  Retorna la lista de actores que participaron en la película con el ID proporcionado.
   
-  Status: 200 OK
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Array de objetos Actor
 }

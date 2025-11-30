@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: https://jsonplaceholder.typicode.com/posts
+  url: https://api.ejemplo.com/movies
   body: none
   auth: none
 }
@@ -16,8 +16,10 @@ headers {
 
 docs {
   # Obtener todas las películas
-  Retorna lista completa de películas
   
-  Status: 200 OK
-  Body: Array de películas
+  Retorna una lista completa de todas las películas registradas.
+  
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Array de objetos Película
 }

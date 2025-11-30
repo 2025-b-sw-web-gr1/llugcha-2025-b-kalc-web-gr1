@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: https://jsonplaceholder.typicode.com/posts/1
+  url: https://api.ejemplo.com/movies/5
   body: none
   auth: none
 }
@@ -14,22 +14,12 @@ headers {
   Accept: application/json
 }
 
-vars {
-  movieId: 1
-}
-
 docs {
-  # Obtener película por ID
+  # Obtener Película por ID
   
-  Retorna una película específica basada en su ID.
-  
-  ## Path Parameters
-  - id: ID de la película (ej: 1)
+  Retorna los detalles de una película específica usando su ID.
   
   ## Respuesta esperada
   - Status: 200 OK
-  - Body: Objeto Movie
-  
-  ## Error posible
-  - 404: Película no encontrada
+  - Body: Objeto Película
 }

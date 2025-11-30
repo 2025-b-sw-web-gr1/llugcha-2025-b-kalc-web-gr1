@@ -5,7 +5,7 @@ meta {
 }
 
 delete {
-  url: https://jsonplaceholder.typicode.com/posts/1
+  url: https://api.ejemplo.com/movies/5
   body: none
   auth: none
 }
@@ -14,21 +14,8 @@ headers {
   Accept: application/json
 }
 
-vars {
-  movieId: 1
-}
-
 docs {
-  # Eliminar película
+  # Eliminar Película
   
-  Elimina una película por su ID.
-  
-  ## Path Parameters
-  - id: ID de la película a eliminar
-  
-  ## Respuesta esperada
-  - Status: 204 No Content (sin body)
-  
-  ## Errores posibles
-  - 404: Película no encontrada
+  Elimina una película de la base de datos usando su ID.
 }

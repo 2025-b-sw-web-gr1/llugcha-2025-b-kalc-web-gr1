@@ -5,46 +5,32 @@ meta {
 }
 
 put {
-  url: https://jsonplaceholder.typicode.com/users/1
+  url: https://api.ejemplo.com/actors/1
   body: json
   auth: none
 }
 
 headers {
   Content-Type: application/json
-  Accept: application/json
 }
 
 body:json {
   {
-    "name": "Leonardo Wilhelm DiCaprio",
-    "birthYear": 1974,
-    "nationality": "Estadounidense",
-    "biography": "Leonardo Wilhelm DiCaprio es un actor, productor y ambientalista estadounidense. Ha ganado múltiples premios incluyendo un Oscar."
+    "id": 1,
+    "name": "Leanne Graham (Actualizado)",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "phone": "1-770-736-8031 x56442"
+    // Se deben enviar todos los campos requeridos para PUT
   }
 }
 
-vars {
-  actorId: 1
-}
-
 docs {
-  # Actualizar actor completo
+  # Actualizar Actor
   
-  Actualiza todos los campos de un actor existente.
-  
-  ## Path Parameters
-  - id: ID del actor a actualizar
-  
-  ## Request Body
-  - Todos los campos son REQUERIDOS (igual que POST)
+  Actualiza completamente los datos de un actor existente identificado por su ID.
   
   ## Respuesta esperada
-  - Status: 200 OK
-  - Body: Objeto Actor actualizado
-  
-  ## Errores posibles
-  - 400: Datos inválidos
-  - 404: Actor no encontrado
+  - Status: 200 OK (o 204 No Content)
+  - Body: Objeto Actor actualizado.
 }
-

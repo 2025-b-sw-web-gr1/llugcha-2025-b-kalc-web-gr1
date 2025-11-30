@@ -5,31 +5,29 @@ meta {
 }
 
 post {
-  url: https://jsonplaceholder.typicode.com/posts
+  url: https://api.ejemplo.com/movies
   body: json
   auth: none
 }
 
 headers {
   Content-Type: application/json
-  Accept: application/json
 }
 
 body:json {
   {
-    "title": "Inception",
-    "director": "Christopher Nolan",
-    "releaseYear": 2010,
-    "genre": "Ciencia Ficción",
-    "duration": 148,
-    "rating": 8.8
+    "title": "La Gran Aventura",
+    "release_year": 2024,
+    "director": "Director Ficticio"
   }
 }
 
 docs {
-  # Crear nueva película
+  # Crear Nueva Película
   
-  Crea una película con los datos enviados.
+  Este endpoint crea un nuevo registro de película.
   
-  Status: 201 Created
+  ## Campos Requeridos
+  - `title`: Título de la película.
+  - `release_year`: Año de estreno.
 }

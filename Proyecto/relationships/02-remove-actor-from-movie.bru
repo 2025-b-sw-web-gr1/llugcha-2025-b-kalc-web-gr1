@@ -1,11 +1,11 @@
 meta {
-  name: Remove Actor from Movie
+  name: Remove Actor from Movie Relationship
   type: http
   seq: 2
 }
 
 delete {
-  url: https://jsonplaceholder.typicode.com/posts/1/comments/1
+  url: https://api.ejemplo.com/relationships/actor/1/movie/10
   body: none
   auth: none
 }
@@ -14,24 +14,14 @@ headers {
   Accept: application/json
 }
 
-vars {
-  movieId: 1
-  actorId: 1
-}
-
 docs {
-  # Remover actor de película
+  # Remover Relación Actor-Película
   
-  Elimina la relación M a M entre una película y un actor.
-  Indica que un actor NO aparece en una película específica.
+  Elimina la relación que indica que un actor participó en una película.
   
-  ## Path Parameters
-  - movieId: ID de la película
-  - actorId: ID del actor
+  ## Parámetros de URL
+  Se espera que la URL contenga ambos IDs (actorId y movieId).
   
   ## Respuesta esperada
-  - Status: 204 No Content
-  
-  ## Errores posibles
-  - 404: La asignación no existe
+  - Status: 200 OK o 204 No Content
 }
