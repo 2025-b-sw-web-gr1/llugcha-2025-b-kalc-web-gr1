@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Lista de Cachorros
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Lista de Cachorros
+
+    if cachorros && cachorros.length > 0
+      ul
+        each c in cachorros
+          li
+            h3 #{c.nombre}
+            p 
+              strong Edad: 
+              | #{c.edad}
+            p 
+              strong Raza: 
+              | #{c.raza}
+    else
+      p No hay cachorros disponibles por ahora.
+
+    hr
+
+    footer
+      p Aplicación Express + Pug — Ejemplo de CRUD con Cachorros

@@ -1,0 +1,18 @@
+meta {
+  name: BorrarCachorro
+  type: http
+  seq: 4
+}
+
+delete {
+  url: '''
+    http://localhost:3000/api/cachorros/1
+    http://localhost:3000/api/cachorros/1
+'''
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

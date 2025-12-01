@@ -1,0 +1,18 @@
+meta {
+  name: agregarCachorro
+  type: http
+  seq: 2
+}
+
+post {
+  url: '''
+    http://localhost:3000/api/cachorros
+    http://localhost:3000/api/cachorros
+'''
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
