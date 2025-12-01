@@ -1,0 +1,42 @@
+meta {
+  name: Get Recipe By ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.recetas-cocina.com/recipes/1
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Obtener receta por ID
+  
+  Recupera los detalles de una receta específica mediante su identificador único.
+  
+  ## Parámetros
+  - `id`: ID de la receta (en la URL)
+  
+  ## Respuesta esperada
+  - Status: 200 OK (si se encuentra)
+  - Status: 404 Not Found (si no existe)
+  
+  ## Ejemplo de respuesta exitosa:
+  ```json
+  {
+    "id": 1,
+    "title": "Lasagna Italiana",
+    "description": "Deliciosa lasagna con salsa boloñesa",
+    "difficulty": "Media",
+    "preparationTime": 30,
+    "cookingTime": 45,
+    "servings": 6,
+    "category": "Pasta"
+  }
+  ```
+}

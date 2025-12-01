@@ -1,0 +1,57 @@
+meta {
+  name: Update Ingredient
+  type: http
+  seq: 10
+}
+
+put {
+  url: https://api.recetas-cocina.com/ingredients/5
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "name": "Tomate cherry",
+    "quantity": 300,
+    "unit": "gramos",
+    "recipeId": 1
+  }
+}
+
+docs {
+  # Actualizar ingrediente
+  
+  Actualiza los datos de un ingrediente existente. Se debe proporcionar el objeto completo.
+  
+  ## Parámetros
+  - `id`: ID del ingrediente a actualizar (en la URL)
+  
+  ## Body (JSON)
+  Todos los campos son obligatorios (mismos requisitos que en POST)
+  
+  ## Respuesta esperada
+  - Status: 200 OK (si se actualiza correctamente)
+  - Status: 404 Not Found (si no existe el ingrediente)
+  - Status: 400 Bad Request (si los datos son inválidos o recipeId no existe)
+  
+  ## Ejemplo de respuesta exitosa:
+  ```json
+  {
+    "id": 5,
+    "name": "Tomate cherry",
+    "quantity": 300,
+    "unit": "gramos",
+    "recipeId": 1
+  }
+  ```
+  
+  ## Nota
+  Es posible cambiar el `recipeId` para mover el ingrediente a otra receta,
+  siempre que la receta destino exista.
+}

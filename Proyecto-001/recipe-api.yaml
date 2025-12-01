@@ -1,0 +1,581 @@
+openapi: 3.0.0
+info:
+  title: API de Recetas e Ingredientes
+  description: |
+    API RESTful para gestionar recetas de cocina y sus ingredientes.
+    Implementa una relación 1:N donde una receta puede tener múltiples ingredientes.
+  version: 1.0.0
+  contact:
+    name: Equipo de Desarrollo
+    email: desarrollo@recetas.com
+
+servers:
+  - url: https://api.recetas-cocina.com
+    description: Servidor de producción
+  - url: http://localhost:4000
+    description: Servidor de desarrollo
+
+tags:
+  - name: Recipes
+    description: Operaciones sobre recetas de cocina
+  - name: Ingredients
+    description: Operaciones sobre ingredientes
+
+paths:
+  /recipes:
+    get:
+      summary: Listar todas las recetas
+      description: Obtiene un listado completo de todas las recetas disponibles en el sistema
+      tags:
+        - Recipes
+      responses:
+        '200':
+          description: Listado de recetas obtenido correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+              example:
+                - id: 1
+                  title: "Lasagna Italiana"
+                  description: "Deliciosa lasagna con salsa boloñesa"
+                  difficulty: "Media"
+                  preparationTime: 30
+                  cookingTime: 45
+                  servings: 6
+                  category: "Pasta"
+                - id: 2
+                  title: "Paella Valenciana"
+                  description: "Arroz tradicional con mariscos"
+                  difficulty: "Difícil"
+                  preparationTime: 40
+                  cookingTime: 50
+                  servings: 8
+                  category: "Arroz"
+        '500':
+          description: Error en el servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      summary: Crear nueva receta
+      description: Registra una nueva receta en el sistema
+      tags:
+        - Recipes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeInput'
+            example:
+              title: "Pasta Carbonara"
+              description: "Receta clásica romana"
+              difficulty: "Fácil"
+              preparationTime: 15
+              cookingTime: 20
+              servings: 4
+              category: "Pasta"
+      responses:
+        '201':
+          description: Receta creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+              example:
+                id: 3
+                title: "Pasta Carbonara"
+                description: "Receta clásica romana"
+                difficulty: "Fácil"
+                preparationTime: 15
+                cookingTime: 20
+                servings: 4
+                category: "Pasta"
+        '400':
+          description: Datos de entrada inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Error en el servidor
+
+  /recipes/{id}:
+    get:
+      summary: Obtener receta por ID
+      description: Recupera los detalles de una receta específica mediante su identificador
+      tags:
+        - Recipes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único de la receta
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Receta encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+              example:
+                id: 1
+                title: "Lasagna Italiana"
+                description: "Deliciosa lasagna con salsa boloñesa"
+                difficulty: "Media"
+                preparationTime: 30
+                cookingTime: 45
+                servings: 6
+                category: "Pasta"
+        '404':
+          description: Receta no encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: "Receta con ID 1 no encontrada"
+        '500':
+          description: Error en el servidor
+
+    put:
+      summary: Actualizar receta completa
+      description: Actualiza todos los campos de una receta existente
+      tags:
+        - Recipes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la receta a actualizar
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeInput'
+            example:
+              title: "Lasagna Italiana Premium"
+              description: "Lasagna mejorada con trufa"
+              difficulty: "Difícil"
+              preparationTime: 35
+              cookingTime: 50
+              servings: 8
+              category: "Pasta"
+      responses:
+        '200':
+          description: Receta actualizada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Datos inválidos
+        '404':
+          description: Receta no encontrada
+        '500':
+          description: Error en el servidor
+
+    delete:
+      summary: Eliminar receta
+      description: Elimina permanentemente una receta del sistema (también elimina sus ingredientes)
+      tags:
+        - Recipes
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la receta a eliminar
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Receta eliminada exitosamente
+        '404':
+          description: Receta no encontrada
+        '500':
+          description: Error en el servidor
+
+  /recipes/{id}/ingredients:
+    get:
+      summary: Obtener ingredientes de una receta
+      description: |
+        Obtiene todos los ingredientes asociados a una receta específica.
+        **Este endpoint demuestra la relación 1:N entre Receta e Ingredientes**
+      tags:
+        - Recipes
+        - Ingredients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID de la receta
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Lista de ingredientes de la receta
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+              example:
+                - id: 1
+                  name: "Pasta para lasaña"
+                  quantity: 500
+                  unit: "gramos"
+                  recipeId: 1
+                - id: 2
+                  name: "Carne molida"
+                  quantity: 400
+                  unit: "gramos"
+                  recipeId: 1
+                - id: 3
+                  name: "Salsa de tomate"
+                  quantity: 300
+                  unit: "ml"
+                  recipeId: 1
+        '404':
+          description: Receta no encontrada
+        '500':
+          description: Error en el servidor
+
+  /ingredients:
+    get:
+      summary: Listar todos los ingredientes
+      description: Obtiene un listado completo de todos los ingredientes registrados
+      tags:
+        - Ingredients
+      responses:
+        '200':
+          description: Listado de ingredientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+              example:
+                - id: 1
+                  name: "Pasta para lasaña"
+                  quantity: 500
+                  unit: "gramos"
+                  recipeId: 1
+                - id: 2
+                  name: "Arroz"
+                  quantity: 400
+                  unit: "gramos"
+                  recipeId: 2
+        '500':
+          description: Error en el servidor
+
+    post:
+      summary: Crear nuevo ingrediente
+      description: Registra un nuevo ingrediente asociado a una receta
+      tags:
+        - Ingredients
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngredientInput'
+            example:
+              name: "Queso Parmesano"
+              quantity: 150
+              unit: "gramos"
+              recipeId: 1
+      responses:
+        '201':
+          description: Ingrediente creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+              example:
+                id: 10
+                name: "Queso Parmesano"
+                quantity: 150
+                unit: "gramos"
+                recipeId: 1
+        '400':
+          description: Datos inválidos o recipeId no existe
+        '500':
+          description: Error en el servidor
+
+  /ingredients/{id}:
+    get:
+      summary: Obtener ingrediente por ID
+      description: Recupera los detalles de un ingrediente específico
+      tags:
+        - Ingredients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del ingrediente
+          schema:
+            type: integer
+            example: 5
+      responses:
+        '200':
+          description: Ingrediente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+              example:
+                id: 5
+                name: "Tomate"
+                quantity: 500
+                unit: "gramos"
+                recipeId: 1
+        '404':
+          description: Ingrediente no encontrado
+        '500':
+          description: Error en el servidor
+
+    put:
+      summary: Actualizar ingrediente
+      description: Actualiza los datos de un ingrediente existente
+      tags:
+        - Ingredients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del ingrediente a actualizar
+          schema:
+            type: integer
+            example: 5
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IngredientInput'
+            example:
+              name: "Tomate cherry"
+              quantity: 300
+              unit: "gramos"
+              recipeId: 1
+      responses:
+        '200':
+          description: Ingrediente actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ingredient'
+        '400':
+          description: Datos inválidos
+        '404':
+          description: Ingrediente no encontrado
+        '500':
+          description: Error en el servidor
+
+    delete:
+      summary: Eliminar ingrediente
+      description: Elimina permanentemente un ingrediente del sistema
+      tags:
+        - Ingredients
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID del ingrediente a eliminar
+          schema:
+            type: integer
+            example: 5
+      responses:
+        '204':
+          description: Ingrediente eliminado exitosamente
+        '404':
+          description: Ingrediente no encontrado
+        '500':
+          description: Error en el servidor
+
+components:
+  schemas:
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador único de la receta
+          example: 1
+        title:
+          type: string
+          description: Nombre de la receta
+          example: "Lasagna Italiana"
+        description:
+          type: string
+          description: Descripción breve de la receta
+          example: "Deliciosa lasagna tradicional con salsa boloñesa"
+        difficulty:
+          type: string
+          enum: [Fácil, Media, Difícil]
+          description: Nivel de dificultad
+          example: "Media"
+        preparationTime:
+          type: integer
+          description: Tiempo de preparación en minutos
+          example: 30
+        cookingTime:
+          type: integer
+          description: Tiempo de cocción en minutos
+          example: 45
+        servings:
+          type: integer
+          description: Número de porciones
+          example: 6
+        category:
+          type: string
+          description: Categoría culinaria
+          example: "Pasta"
+      required:
+        - id
+        - title
+        - description
+        - difficulty
+        - preparationTime
+        - cookingTime
+        - servings
+        - category
+
+    RecipeInput:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 3
+          maxLength: 100
+          description: Nombre de la receta
+          example: "Pasta Carbonara"
+        description:
+          type: string
+          minLength: 10
+          maxLength: 500
+          description: Descripción de la receta
+          example: "Receta clásica romana con huevo y pancetta"
+        difficulty:
+          type: string
+          enum: [Fácil, Media, Difícil]
+          description: Nivel de dificultad
+          example: "Fácil"
+        preparationTime:
+          type: integer
+          minimum: 1
+          description: Tiempo de preparación en minutos
+          example: 15
+        cookingTime:
+          type: integer
+          minimum: 1
+          description: Tiempo de cocción en minutos
+          example: 20
+        servings:
+          type: integer
+          minimum: 1
+          description: Número de porciones
+          example: 4
+        category:
+          type: string
+          minLength: 3
+          maxLength: 50
+          description: Categoría culinaria
+          example: "Pasta"
+      required:
+        - title
+        - description
+        - difficulty
+        - preparationTime
+        - cookingTime
+        - servings
+        - category
+
+    Ingredient:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Identificador único del ingrediente
+          example: 5
+        name:
+          type: string
+          description: Nombre del ingrediente
+          example: "Tomate"
+        quantity:
+          type: number
+          format: float
+          description: Cantidad del ingrediente
+          example: 500
+        unit:
+          type: string
+          description: Unidad de medida (gramos, ml, cucharadas, etc.)
+          example: "gramos"
+        recipeId:
+          type: integer
+          description: ID de la receta a la que pertenece (Foreign Key)
+          example: 1
+      required:
+        - id
+        - name
+        - quantity
+        - unit
+        - recipeId
+
+    IngredientInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+          description: Nombre del ingrediente
+          example: "Queso Parmesano"
+        quantity:
+          type: number
+          format: float
+          minimum: 0.01
+          description: Cantidad del ingrediente
+          example: 150
+        unit:
+          type: string
+          minLength: 1
+          maxLength: 20
+          description: Unidad de medida
+          example: "gramos"
+        recipeId:
+          type: integer
+          minimum: 1
+          description: ID de la receta a la que pertenece
+          example: 1
+      required:
+        - name
+        - quantity
+        - unit
+        - recipeId
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Descripción del error
+          example: "Receta no encontrada"
+      required:
+        - message

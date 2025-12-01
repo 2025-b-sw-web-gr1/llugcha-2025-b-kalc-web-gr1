@@ -1,0 +1,39 @@
+meta {
+  name: Get Ingredient By ID
+  type: http
+  seq: 7
+}
+
+get {
+  url: https://api.recetas-cocina.com/ingredients/5
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Obtener ingrediente por ID
+  
+  Recupera los detalles de un ingrediente específico mediante su identificador único.
+  
+  ## Parámetros
+  - `id`: ID del ingrediente (en la URL)
+  
+  ## Respuesta esperada
+  - Status: 200 OK (si se encuentra)
+  - Status: 404 Not Found (si no existe)
+  
+  ## Ejemplo de respuesta exitosa:
+  ```json
+  {
+    "id": 5,
+    "name": "Tomate",
+    "quantity": 500,
+    "unit": "gramos",
+    "recipeId": 1
+  }
+  ```
+}

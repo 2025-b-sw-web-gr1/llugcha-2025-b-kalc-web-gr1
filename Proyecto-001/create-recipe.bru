@@ -1,0 +1,62 @@
+meta {
+  name: Create Recipe
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.recetas-cocina.com/recipes
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "title": "Pasta Carbonara",
+    "description": "Receta clásica romana con huevo y pancetta",
+    "difficulty": "Fácil",
+    "preparationTime": 15,
+    "cookingTime": 20,
+    "servings": 4,
+    "category": "Pasta"
+  }
+}
+
+docs {
+  # Crear nueva receta
+  
+  Este endpoint permite registrar una nueva receta en el sistema.
+  
+  ## Body (JSON)
+  Todos los campos son obligatorios:
+  - `title`: Nombre de la receta (string, 3-100 caracteres)
+  - `description`: Descripción de la receta (string, 10-500 caracteres)
+  - `difficulty`: Nivel de dificultad (enum: "Fácil", "Media", "Difícil")
+  - `preparationTime`: Tiempo de preparación en minutos (integer, mínimo 1)
+  - `cookingTime`: Tiempo de cocción en minutos (integer, mínimo 1)
+  - `servings`: Número de porciones (integer, mínimo 1)
+  - `category`: Categoría culinaria (string, 3-50 caracteres)
+  
+  ## Respuesta esperada
+  - Status: 201 Created
+  - Body: Objeto Recipe con el ID asignado
+  
+  ## Ejemplo de respuesta:
+  ```json
+  {
+    "id": 3,
+    "title": "Pasta Carbonara",
+    "description": "Receta clásica romana con huevo y pancetta",
+    "difficulty": "Fácil",
+    "preparationTime": 15,
+    "cookingTime": 20,
+    "servings": 4,
+    "category": "Pasta"
+  }
+  ```
+}

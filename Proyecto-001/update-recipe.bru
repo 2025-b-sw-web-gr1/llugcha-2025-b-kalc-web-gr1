@@ -1,0 +1,59 @@
+meta {
+  name: Update Recipe
+  type: http
+  seq: 4
+}
+
+put {
+  url: https://api.recetas-cocina.com/recipes/1
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "title": "Lasagna Italiana Premium",
+    "description": "Lasagna mejorada con trufa y quesos especiales",
+    "difficulty": "Difícil",
+    "preparationTime": 35,
+    "cookingTime": 50,
+    "servings": 8,
+    "category": "Pasta"
+  }
+}
+
+docs {
+  # Actualizar receta completa
+  
+  Actualiza todos los campos de una receta existente. Se debe proporcionar el objeto completo.
+  
+  ## Parámetros
+  - `id`: ID de la receta a actualizar (en la URL)
+  
+  ## Body (JSON)
+  Todos los campos son obligatorios (mismos requisitos que en POST)
+  
+  ## Respuesta esperada
+  - Status: 200 OK (si se actualiza correctamente)
+  - Status: 404 Not Found (si no existe la receta)
+  - Status: 400 Bad Request (si los datos son inválidos)
+  
+  ## Ejemplo de respuesta exitosa:
+  ```json
+  {
+    "id": 1,
+    "title": "Lasagna Italiana Premium",
+    "description": "Lasagna mejorada con trufa y quesos especiales",
+    "difficulty": "Difícil",
+    "preparationTime": 35,
+    "cookingTime": 50,
+    "servings": 8,
+    "category": "Pasta"
+  }
+  ```
+}

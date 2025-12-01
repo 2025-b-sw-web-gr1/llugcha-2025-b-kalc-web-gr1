@@ -1,0 +1,57 @@
+meta {
+  name: Create Ingredient
+  type: http
+  seq: 9
+}
+
+post {
+  url: https://api.recetas-cocina.com/ingredients
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+  Accept: application/json
+}
+
+body:json {
+  {
+    "name": "Queso Parmesano",
+    "quantity": 150,
+    "unit": "gramos",
+    "recipeId": 1
+  }
+}
+
+docs {
+  # Crear nuevo ingrediente
+  
+  Este endpoint permite registrar un nuevo ingrediente asociado a una receta existente.
+  
+  ## Body (JSON)
+  Todos los campos son obligatorios:
+  - `name`: Nombre del ingrediente (string, 2-100 caracteres)
+  - `quantity`: Cantidad del ingrediente (number, mínimo 0.01)
+  - `unit`: Unidad de medida (string, 1-20 caracteres) - Ej: "gramos", "ml", "cucharadas", "tazas"
+  - `recipeId`: ID de la receta a la que pertenece (integer, debe existir)
+  
+  ## Respuesta esperada
+  - Status: 201 Created
+  - Body: Objeto Ingredient con el ID asignado
+  
+  ## Ejemplo de respuesta:
+  ```json
+  {
+    "id": 10,
+    "name": "Queso Parmesano",
+    "quantity": 150,
+    "unit": "gramos",
+    "recipeId": 1
+  }
+  ```
+  
+  ## Posibles errores
+  - 400 Bad Request: Datos inválidos o recipeId no existe
+  - 500 Internal Server Error: Error en el servidor
+}

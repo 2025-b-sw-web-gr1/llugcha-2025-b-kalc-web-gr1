@@ -1,0 +1,41 @@
+meta {
+  name: Get All Recipes
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://api.recetas-cocina.com/recipes
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Obtener todas las recetas
+  
+  Este endpoint retorna un listado completo de todas las recetas disponibles en el sistema.
+  
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Array de objetos Recipe
+  
+  ## Ejemplo de respuesta:
+  ```json
+  [
+    {
+      "id": 1,
+      "title": "Lasagna Italiana",
+      "description": "Deliciosa lasagna con salsa boloñesa",
+      "difficulty": "Media",
+      "preparationTime": 30,
+      "cookingTime": 45,
+      "servings": 6,
+      "category": "Pasta"
+    }
+  ]
+  ```
+}

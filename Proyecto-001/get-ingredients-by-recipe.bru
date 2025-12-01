@@ -1,0 +1,62 @@
+meta {
+  name: Get Ingredients By Recipe
+  type: http
+  seq: 8
+}
+
+get {
+  url: https://api.recetas-cocina.com/recipes/1/ingredients
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Obtener ingredientes de una receta
+  
+  **⭐ ENDPOINT CLAVE ⭐**
+  
+  Este endpoint demuestra la relación 1:N entre Receta e Ingredientes.
+  Retorna todos los ingredientes que pertenecen a una receta específica.
+  
+  ## Parámetros
+  - `id`: ID de la receta (en la URL)
+  
+  ## Respuesta esperada
+  - Status: 200 OK (retorna array vacío si no tiene ingredientes)
+  - Status: 404 Not Found (si la receta no existe)
+  
+  ## Ejemplo de respuesta:
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Pasta para lasaña",
+      "quantity": 500,
+      "unit": "gramos",
+      "recipeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Carne molida",
+      "quantity": 400,
+      "unit": "gramos",
+      "recipeId": 1
+    },
+    {
+      "id": 3,
+      "name": "Salsa de tomate",
+      "quantity": 300,
+      "unit": "ml",
+      "recipeId": 1
+    }
+  ]
+  ```
+  
+  ## Relación 1:N
+  Todos los ingredientes retornados tienen el mismo `recipeId` (1 en este caso),
+  demostrando que múltiples ingredientes pertenecen a una sola receta.
+}

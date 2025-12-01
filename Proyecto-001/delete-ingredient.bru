@@ -1,0 +1,37 @@
+meta {
+  name: Delete Ingredient
+  type: http
+  seq: 11
+}
+
+delete {
+  url: https://api.recetas-cocina.com/ingredients/5
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Eliminar ingrediente
+  
+  Elimina permanentemente un ingrediente del sistema.
+  
+  ## Parámetros
+  - `id`: ID del ingrediente a eliminar (en la URL)
+  
+  ## Respuesta esperada
+  - Status: 204 No Content (si se elimina correctamente)
+  - Status: 404 Not Found (si no existe el ingrediente)
+  
+  ## Nota
+  En una eliminación exitosa (204), no se retorna ningún contenido en el body.
+  
+  ## Diferencia con eliminar receta
+  Al eliminar un ingrediente, solo se elimina ese ingrediente específico.
+  La receta a la que pertenecía NO se elimina.
+  
+  (En cambio, al eliminar una receta, se eliminan también todos sus ingredientes)
+}

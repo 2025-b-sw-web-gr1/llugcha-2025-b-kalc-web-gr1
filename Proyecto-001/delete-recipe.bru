@@ -1,0 +1,32 @@
+meta {
+  name: Delete Recipe
+  type: http
+  seq: 5
+}
+
+delete {
+  url: https://api.recetas-cocina.com/recipes/1
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Eliminar receta
+  
+  Elimina permanentemente una receta del sistema.
+  **Advertencia:** También se eliminarán todos los ingredientes asociados a esta receta.
+  
+  ## Parámetros
+  - `id`: ID de la receta a eliminar (en la URL)
+  
+  ## Respuesta esperada
+  - Status: 204 No Content (si se elimina correctamente)
+  - Status: 404 Not Found (si no existe la receta)
+  
+  ## Nota
+  En una eliminación exitosa (204), no se retorna ningún contenido en el body.
+}

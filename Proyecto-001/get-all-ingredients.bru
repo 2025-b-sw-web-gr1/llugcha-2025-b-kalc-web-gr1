@@ -1,0 +1,49 @@
+meta {
+  name: Get All Ingredients
+  type: http
+  seq: 6
+}
+
+get {
+  url: https://api.recetas-cocina.com/ingredients
+  body: none
+  auth: none
+}
+
+headers {
+  Accept: application/json
+}
+
+docs {
+  # Obtener todos los ingredientes
+  
+  Este endpoint retorna un listado completo de todos los ingredientes registrados en el sistema, 
+  independientemente de la receta a la que pertenezcan.
+  
+  ## Respuesta esperada
+  - Status: 200 OK
+  - Body: Array de objetos Ingredient
+  
+  ## Ejemplo de respuesta:
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Pasta para lasaña",
+      "quantity": 500,
+      "unit": "gramos",
+      "recipeId": 1
+    },
+    {
+      "id": 2,
+      "name": "Arroz",
+      "quantity": 400,
+      "unit": "gramos",
+      "recipeId": 2
+    }
+  ]
+  ```
+  
+  ## Nota
+  El campo `recipeId` indica a qué receta pertenece cada ingrediente (Foreign Key).
+}
